@@ -8,11 +8,12 @@ import mysql.connector
 #function to connect to database and SELECT all entries from the table album
 
 def init_album():
+    #credentials for my own database are not included
     mydb = mysql.connector.connect(
-        host = "localhost",
-        user = "root",
-        password = "Train1235!",
-        database = "music"
+        host = "*******",
+        user = "****",
+        password = "*****",
+        database = "*****"
     )
     mycursor = mydb.cursor()
     mycursor.execute("SELECT * FROM album")
@@ -21,10 +22,10 @@ def init_album():
     
 def show_all_album(sheet):
     mydb = mysql.connector.connect(
-        host = "localhost",
-        user = "root",
-        password = "Train1235!",
-        database = "music"
+        host = "*******",
+        user = "****",
+        password = "*****",
+        database = "*****"
     )
     mycursor = mydb.cursor()
     mycursor.execute("SELECT * FROM album;")
@@ -33,10 +34,10 @@ def show_all_album(sheet):
 
 def select_album(sheet, ent):
     mydb = mysql.connector.connect(
-        host = "localhost",
-        user = "root",
-        password = "Train1235!",
-        database = "music"
+        host = "*******",
+        user = "****",
+        password = "*****",
+        database = "*****"
     )
     mycursor = mydb.cursor()
     select_state = 'SELECT * FROM album WHERE ALBUM_TITLE LIKE ' + '"%' +  ent.get() + '%";'
