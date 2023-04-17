@@ -27,4 +27,8 @@ if __name__ == "__main__":
     album_result_sheet = ts.Sheet(root, data = da.init_album())
     album_result_sheet.grid(row=1, column=5, rowspan = 5, columnspan = 10, ipadx = 100)
 
+    #button to add a new album entry
+    album_add_button = Button(root, text="Add new Album", padx=10, pady=5, command=lambda:da.open_add_window_album(root))
+    album_add_button.grid(row=0, column=6)
+
     root.mainloop()
