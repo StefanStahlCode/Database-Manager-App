@@ -31,4 +31,8 @@ if __name__ == "__main__":
     album_add_button = Button(root, text="Add new Album", padx=10, pady=5, command=lambda:da.open_add_window_album(root))
     album_add_button.grid(row=0, column=6)
 
+    #button to delete album entry
+    album_delete_button = Button(root, text="Delete Album", padx=10, pady=5, command=lambda:da.open_delete_window_album(root))
+    album_delete_button.grid(row=0, column=7)
+
     root.mainloop()
