@@ -9,10 +9,10 @@ import mysql.connector
 
 def init_album():
     mydb = mysql.connector.connect(
-        host = "localhost",
-        user = "root",
-        password = "Train1235!",
-        database = "music"
+        host = "*****",
+        user = "*****",
+        password = "*****",
+        database = "*****"
     )
     mycursor = mydb.cursor()
     mycursor.execute("SELECT * FROM album")
@@ -22,10 +22,10 @@ def init_album():
     
 def show_all_album(sheet):
     mydb = mysql.connector.connect(
-        host = "localhost",
-        user = "root",
-        password = "Train1235!",
-        database = "music"
+        host = "*****",
+        user = "*****",
+        password = "*****",
+        database = "*****"
     )
     mycursor = mydb.cursor()
     mycursor.execute("SELECT * FROM album;")
@@ -35,10 +35,10 @@ def show_all_album(sheet):
 
 def select_album(sheet, ent):
     mydb = mysql.connector.connect(
-        host = "localhost",
-        user = "root",
-        password = "Train1235!",
-        database = "music"
+        host = "*****",
+        user = "*****",
+        password = "*****",
+        database = "*****"
     )
     mycursor = mydb.cursor()
     select_state = 'SELECT * FROM album WHERE ALBUM_TITLE LIKE ' + '"%' +  ent.get() + '%";'
@@ -83,10 +83,10 @@ def open_add_window_album(root):
 #function to insert a new album into the db
 def album_commit(title, artist, year, image, des):
     mydb = mysql.connector.connect(
-        host = "localhost",
-        user = "root",
-        password = "Train1235!",
-        database = "music"
+        host = "*****",
+        user = "*****",
+        password = "*****!",
+        database = "*****"
     )
     mycursor = mydb.cursor()
     sel = "INSERT INTO album (ALBUM_TITLE, ARTIST, YEAR, IMAGE_NAME, DESCRIPTION) VALUES (%s,%s,%s,%s,%s)"
@@ -119,10 +119,10 @@ def open_delete_window_album(root):
 #query to get first entry for the sheet on delete window pop up
 def start_query(string):
     mydb = mysql.connector.connect(
-        host = "localhost",
-        user = "root",
-        password = "Train1235!",
-        database = "music"
+        host = "*****",
+        user = "*****",
+        password = "*****!",
+        database = "*****"
     )
     mycursor = mydb.cursor()
     select_state = 'SELECT * FROM album WHERE ALBUM_TITLE LIKE ' + '"%' +  str(string) + '%";'
@@ -137,10 +137,10 @@ def delete_album(name):
     album = start_query(name)
     #album = album[0]
     mydb = mysql.connector.connect(
-        host = "localhost",
-        user = "root",
-        password = "Train1235!",
-        database = "music"
+        host = "*****",
+        user = "*****",
+        password = "*****!",
+        database = "*****"
     )
     mycursor = mydb.cursor()
     dele = "DELETE FROM album WHERE ID = %s"
