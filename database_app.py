@@ -96,8 +96,59 @@ def album_commit(title, artist, year, image, des):
     mydb.commit()
     mydb.close()
 
+#delete Album entry
+def open_delete_window_album(root):
+    window = Toplevel(root)
+    window.title("Delete Album")
+    window.geometry("600x400")
+    retu = init_album()
+    options= []
+    for i in retu:
+        options.append(i[1])
+    current = StringVar()
+    current.set(options[0])
+    drop = OptionMenu(window, current, *options)
+    drop.grid(row=0, column=0)
+    sheet = ts.Sheet(window, data=start_query(current.get()))
+    sheet.grid(row=1, column = 0, ipadx=100)
+    select_button = Button(window, text="Show Selected Album", padx=10, pady=5, command=lambda:select_album(sheet, current))
+    select_button.grid(row=2, column=0)
+    delete_button = Button(window, text="Delete Selected Album", padx=10, pady=5, command=lambda:delete_album(current.get()))
+    delete_button.grid(row=3, column=0)
 
+#query to get first entry for the sheet on delete window pop up
+def start_query(string):
+    mydb = mysql.connector.connect(
+        host = "localhost",
+        user = "root",
+        password = "Train1235!",
+        database = "music"
+    )
+    mycursor = mydb.cursor()
+    select_state = 'SELECT * FROM album WHERE ALBUM_TITLE LIKE ' + '"%' +  str(string) + '%";'
+    #print(select_state)
+    mycursor.execute(select_state)
+    myresult = mycursor.fetchall()
+    mydb.close()
+    return myresult
 
+#takes the album name, then query to get the index and delete via primary key
+def delete_album(name):
+    album = start_query(name)
+    #album = album[0]
+    mydb = mysql.connector.connect(
+        host = "localhost",
+        user = "root",
+        password = "Train1235!",
+        database = "music"
+    )
+    mycursor = mydb.cursor()
+    dele = "DELETE FROM album WHERE ID = %s"
+    wh = list(str(album[0][0]))
+
+    mycursor.execute(dele,wh)
+    mydb.commit()
+    mydb.close()
 
 
 
